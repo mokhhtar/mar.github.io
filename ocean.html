@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oceanside Hair Salon — Premium Hair & Barber Services</title>
+  <meta name="description" content="Oceanside Hair Salon — professional haircuts, coloring, styling and barber services in Oceanside, CA. Book online or contact us. This domain is available for sale." />
+  <meta name="author" content="Oceanside Hair Salon" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ------------------------------------------------------------
+       Basic design system (variables + reset)
+       Modern, responsive single-file landing page — clean & accessible
+       ------------------------------------------------------------ */
+    :root{
+      --accent: #0ea5a4; /* teal */
+      --dark: #0b1220;
+      --muted: #6b7280;
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --glass: rgba(255,255,255,0.65);
+      --radius: 12px;
+      --max-width: 1100px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: light;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#f7fbfb 0%,var(--bg) 100%);
+      color:var(--dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:24px 16px;
+      display:flex;justify-content:center;
+    }
+
+    .container{width:100%;max-width:var(--max-width);}
+
+    /* Header */
+    header.site-header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;
+    }
+
+    .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:grid;place-items:center;color:white;font-weight:700;font-family:'Playfair Display',serif;
+      box-shadow:0 8px 24px rgba(12,20,30,0.08);
+    }
+    .brand h1{font-size:18px;margin:0}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav.primary{display:flex;gap:10px;align-items:center}
+    nav.primary a{font-size:14px;text-decoration:none;padding:8px 12px;border-radius:10px;color:var(--dark)}
+    nav.primary a.cta{background:var(--accent);color:white;box-shadow:0 6px 18px rgba(14,165,164,0.18)}
+
+    /* Mobile nav */
+    .mobile-toggle{display:none;padding:8px;border-radius:8px;background:rgba(11,18,32,0.04);border:1px solid rgba(11,18,32,0.03)}
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(180deg, rgba(14,165,164,0.06), rgba(96,165,250,0.03));
+      border-radius:16px;padding:28px;display:grid;grid-template-columns:1fr 380px;gap:20px;align-items:center;margin-bottom:20px;box-shadow:0 10px 30px rgba(12,20,30,0.04);
+    }
+    .hero-left h2{font-family:'Playfair Display',serif;font-size:34px;margin:0 0 8px}
+    .hero-left p.lead{margin:0 0 18px;color:var(--muted)}
+    .hero-cta{display:flex;gap:10px}
+    .btn{padding:12px 16px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-ghost{background:transparent;border:1px solid rgba(11,18,32,0.06)}
+
+    /* Quick-info card */
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(12,20,30,0.05)}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+    .service{padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.9),var(--card));display:flex;gap:12px;align-items:flex-start}
+    .service svg{width:40px;height:40px;flex-shrink:0}
+    .service h3{margin:0;font-size:16px}
+    .service p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+    /* Pricing + Hours layout */
+    .grid-two{display:grid;grid-template-columns:1fr 360px;gap:16px;margin-bottom:20px}
+    .price-list{display:grid;gap:10px}
+    .price-item{display:flex;justify-content:space-between;padding:12px;border-radius:10px;background:var(--glass);backdrop-filter:blur(6px)}
+
+    table.hours{width:100%;border-collapse:collapse}
+    table.hours td, table.hours th{padding:8px;border-bottom:1px dashed rgba(11,18,32,0.06)}
+    .open{color:green;font-weight:600}
+
+    /* Booking form */
+    form.booking{display:grid;gap:10px}
+    input,select,textarea{padding:10px;border-radius:8px;border:1px solid rgba(11,18,32,0.06);font-size:14px}
+    .form-row{display:flex;gap:8px}
+    .form-row .col{flex:1}
+    .note{font-size:13px;color:var(--muted)}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+    .testimonial{padding:16px;border-radius:12px;background:linear-gradient(180deg,#fff,#fafafa);box-shadow:0 6px 18px rgba(12,20,30,0.04)}
+
+    /* Contact + map */
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:40px}
+    .map{min-height:220px;border-radius:12px;overflow:hidden}
+    iframe.map-embed{width:100%;height:100%;border:0}
+
+    footer{padding:20px 0;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr 1fr}
+      .grid-two{grid-template-columns:1fr}
+      .services{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:720px){
+      body{padding:16px}
+      header.site-header{align-items:flex-start}
+      .hero{grid-template-columns:1fr;}
+      nav.primary{display:none}
+      .mobile-toggle{display:inline-block}
+      .services{grid-template-columns:1fr}
+      .testimonials{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+    }
+
+    /* Simple animation helpers */
+    .fade-in{opacity:0;transform:translateY(10px);transition:all 600ms cubic-bezier(.2,.9,.2,1)}
+    .fade-in.show{opacity:1;transform:none}
+
+    /* small utility */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(14,165,164,0.08);color:var(--accent);font-weight:600}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="site-header">
+      <a class="brand" href="#home">
+        <div class="logo" aria-hidden="true">OH</div>
+        <div>
+          <h1>Oceanside Hair Salon</h1>
+          <p class="small">Premium haircuts & barbering — Oceanside, CA</p>
+        </div>
+      </a>
+
+      <nav class="primary" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#prices">Prices</a>
+        <a href="#hours">Hours</a>
+        <a href="#booking" class="cta">Book Now</a>
+      </nav>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+    </header>
+
+    <!-- Mobile menu (hidden on desktop) -->
+    <div id="mobileMenu" style="display:none;margin-bottom:16px;">
+      <div class="card" style="display:flex;flex-direction:column;gap:8px;">
+        <a href="#services">Services</a>
+        <a href="#prices">Prices</a>
+        <a href="#hours">Hours</a>
+        <a href="#booking">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section id="home" class="hero card fade-in" data-fade>
+      <div class="hero-left">
+        <h2>Look great. Feel confident. <span class="pill">Book in minutes</span></h2>
+        <p class="lead">Professional stylists & barbers focused on modern cuts, color, and classic barber services. Walk-ins welcome; appointments recommended.</p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Book Appointment</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:12px;align-items:center">
+          <div class="card small" style="display:flex;flex-direction:column;">
+            <strong>Phone</strong>
+            <a href="tel:+17605550123">(760) 555-0123</a>
+          </div>
+          <div class="card small">
+            <strong>Address</strong>
+            <div class="muted">123 Seaside Ave, Oceanside, CA</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card" style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div class="small muted">Open Today</div>
+          <div class="small open">8:00 AM — 6:00 PM</div>
+        </div>
+        <div class="small muted">Quick contact</div>
+        <div style="display:flex;gap:8px;">
+          <a class="btn" href="tel:+17605550123">Call</a>
+          <a class="btn btn-primary" href="#booking">Book</a>
+        </div>
+        <hr style="border:none;border-top:1px dashed rgba(11,18,32,0.06);">
+        <div class="small muted">This domain is for sale</div>
+        <a class="btn btn-ghost" href="mailto:sales@oceansidehairsalon.com?subject=Interest%20in%20oceansidehairsalon.com">Inquire about purchase</a>
+      </aside>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="fade-in" data-fade style="margin-bottom:16px;">
+      <h2 style="margin:0 0 12px;font-family:'Playfair Display',serif;">Services</h2>
+      <div class="services">
+        <article class="service">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7c0 3 2 5 5 5s5-2 5-5" stroke="#0b1220" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <h3>Men's Haircut</h3>
+            <p>Classic & modern cuts, fades, and scissor work. Precision barbering for every style.</p>
+          </div>
+        </article>
+        <article class="service">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c2.21 0 4 1.79 4 4v1H8V7c0-2.21 1.79-4 4-4z" stroke="#0b1220" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <h3>Women's Styling & Color</h3>
+            <p>Color, balayage, highlights, blowouts and special event styling by experienced stylists.</p>
+          </div>
+        </article>
+        <article class="service">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2" stroke="#0b1220" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <h3>Beard & Grooming</h3>
+            <p>Beard trims, hot towel shaves, and grooming packages for a polished look.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Pricing + Hours -->
+    <section class="grid-two fade-in" data-fade>
+      <div>
+        <h2 id="prices" style="margin-top:0;font-family:'Playfair Display',serif;">Pricing</h2>
+        <div class="price-list">
+          <div class="price-item">
+            <div>
+              <strong>Men's Haircut</strong>
+              <div class="small muted">Includes consultation & styling</div>
+            </div>
+            <div><strong>$30</strong></div>
+          </div>
+          <div class="price-item">
+            <div>
+              <strong>Women's Haircut</strong>
+              <div class="small muted">Cut & blow-dry</div>
+            </div>
+            <div><strong>$55</strong></div>
+          </div>
+          <div class="price-item">
+            <div>
+              <strong>Color / Highlights</strong>
+              <div class="small muted">From — final price depends on service</div>
+            </div>
+            <div><strong>From $80</strong></div>
+          </div>
+          <div class="price-item">
+            <div>
+              <strong>Beard Trim</strong>
+              <div class="small muted">Hot towel + shape</div>
+            </div>
+            <div><strong>$18</strong></div>
+          </div>
+          <div class="price-item">
+            <div>
+              <strong>Kids (Under 12)</strong>
+              <div class="small muted">Quick, friendly cuts</div>
+            </div>
+            <div><strong>$20</strong></div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;font-size:13px;color:var(--muted);">* Prices are examples — update them to match your real offering.</div>
+      </div>
+
+      <aside class="card">
+        <h3 id="hours">Opening Hours</h3>
+        <table class="hours" aria-label="Opening hours">
+          <tbody>
+            <tr><td>Monday</td><td class="open">8:00 AM — 6:00 PM</td></tr>
+            <tr><td>Tuesday</td><td class="open">8:00 AM — 6:00 PM</td></tr>
+            <tr><td>Wednesday</td><td class="open">8:00 AM — 6:00 PM</td></tr>
+            <tr><td>Thursday</td><td class="open">8:00 AM — 8:00 PM</td></tr>
+            <tr><td>Friday</td><td class="open">8:00 AM — 6:00 PM</td></tr>
+            <tr><td>Saturday</td><td class="open">9:00 AM — 4:00 PM</td></tr>
+            <tr><td>Sunday</td><td class="muted">Closed</td></tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px;">Holiday hours may vary — call to confirm.</div>
+      </aside>
+    </section>
+
+    <!-- Booking form -->
+    <section id="booking" class="card fade-in" data-fade>
+      <h2 style="margin-top:0;font-family:'Playfair Display',serif;">Book an Appointment</h2>
+      <form class="booking" id="bookingForm" aria-label="Booking form">
+        <div class="form-row">
+          <div class="col">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" required placeholder="Jane Doe">
+          </div>
+          <div class="col">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" required placeholder="(760) 555-0123">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com">
+          </div>
+          <div class="col">
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+              <option value="">Choose a service</option>
+              <option>Men's Haircut — $30</option>
+              <option>Women's Haircut — $55</option>
+              <option>Color / Highlights — From $80</option>
+              <option>Beard Trim — $18</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col">
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+          <div class="col">
+            <label for="time">Time</label>
+            <input id="time" name="time" type="time" required>
+          </div>
+        </div>
+
+        <label for="notes">Notes (optional)</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Tell us about your style or requests"></textarea>
+
+        <div style="display:flex;gap:10px;align-items:center">
+          <button type="submit" class="btn btn-primary">Request Appointment</button>
+          <div class="note">We'll contact you to confirm availability.</div>
+        </div>
+      </form>
+
+      <script>
+        // Booking form: client-side validation and fallback to mailto if no backend.
+        (function(){
+          const form = document.getElementById('bookingForm');
+          form.addEventListener('submit', function(e){
+            e.preventDefault();
+            const name = form.name.value.trim();
+            const phone = form.phone.value.trim();
+            const service = form.service.value;
+            const date = form.date.value;
+            const time = form.time.value;
+
+            // simple validation
+            if(!name || !phone || !service || !date || !time){
+              alert('Please fill the required fields: name, phone, service, date and time.');
+              return;
+            }
+
+            // prepare summary email (mailto) so user can send booking request
+            const subject = encodeURIComponent('Appointment Request: ' + name);
+            const bodyLines = [];
+            bodyLines.push('Name: ' + name);
+            bodyLines.push('Phone: ' + phone);
+            if(form.email.value) bodyLines.push('Email: ' + form.email.value);
+            bodyLines.push('Service: ' + service);
+            bodyLines.push('Date: ' + date + ' Time: ' + time);
+            if(form.notes.value) bodyLines.push('Notes: ' + form.notes.value);
+            bodyLines.push('\n--\nSent from oceansidehairsalon.com');
+            const body = encodeURIComponent(bodyLines.join('\n'));
+
+            // Open user's email client with prefilled message (fallback when no server)
+            window.location.href = 'mailto:hello@oceansidehairsalon.com?subject=' + subject + '&body=' + body;
+
+            // optionally store the request locally (useful when demoing)
+            try{const log = JSON.parse(localStorage.getItem('oh_booking_log')||'[]');log.unshift({name,phone,service,date,time,at:new Date().toISOString()});localStorage.setItem('oh_booking_log',JSON.stringify(log));}catch(err){}
+          });
+        })();
+      </script>
+    </section>
+
+    <!-- Testimonials + domain sale CTA -->
+    <section class="testimonials fade-in" data-fade>
+      <article class="testimonial">
+        <p>"Amazing experience — best barber in Oceanside. Great fade and quick service."</p>
+        <div class="muted">— Mark T.</div>
+      </article>
+      <article class="testimonial">
+        <p>"Stylists are creative and friendly. Love my new color!"</p>
+        <div class="muted">— Alicia R.</div>
+      </article>
+    </section>
+
+    <!-- Contact + Map -->
+    <section id="contact" class="contact fade-in" data-fade>
+      <div>
+        <h3>Contact</h3>
+        <div class="card">
+          <strong>Phone</strong>
+          <div style="margin-bottom:8px;"><a href="tel:+17605550123">(760) 555-0123</a></div>
+          <strong>Email</strong>
+          <div style="margin-bottom:8px;"><a href="mailto:hello@oceansidehairsalon.com">hello@oceansidehairsalon.com</a></div>
+          <strong>Address</strong>
+          <div class="muted">123 Seaside Ave, Oceanside, CA</div>
+          <hr style="border:none;border-top:1px dashed rgba(11,18,32,0.06);margin:12px 0">
+          <strong>Interested in buying this domain?</strong>
+          <div class="muted">This domain (oceansidehairsalon.com) is available. Click below to inquire.</div>
+          <a class="btn btn-ghost" href="mailto:sales@oceansidehairsalon.com?subject=Interest%20in%20oceansidehairsalon.com" style="margin-top:10px;display:inline-block;">Inquire about domain</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>Location</h3>
+        <div class="map card">
+          <!-- Replace the src below with your real Google Maps embed when you have the address -->
+          <iframe class="map-embed" title="Oceanside Hair Salon map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d0!2d-117.379!3d33.195" aria-hidden="false"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div>© <strong>Oceanside Hair Salon</strong> — Oceanside, CA</div>
+        <div class="muted">Designed for demo & sale — update details before publishing</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Structured data for SEO (LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    "name": "Oceanside Hair Salon",
+    "url": "https://oceansidehairsalon.com",
+    "telephone": "+1-760-555-0123",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 Seaside Ave",
+      "addressLocality": "Oceanside",
+      "addressRegion": "CA",
+      "postalCode": "92054",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": [
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"16:00"}
+    ]
+  }
+  </script>
+
+  <script>
+    // Small JS utilities: mobile menu, fade-in on scroll, simple testimonial rotation
+    (function(){
+      // mobile menu toggle
+      const toggle = document.getElementById('mobileToggle');
+      const menu = document.getElementById('mobileMenu');
+      toggle.addEventListener('click', function(){
+        const open = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!open));
+        menu.style.display = open ? 'none' : 'block';
+      });
+
+      // fade-in using IntersectionObserver
+      const fades = document.querySelectorAll('[data-fade]');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('show');
+            io.unobserve(entry.target);
+          }
+        });
+      },{threshold:0.12});
+      fades.forEach(el=>io.observe(el));
+
+      // rotate testimonials (simple)
+      const tests = Array.from(document.querySelectorAll('.testimonials .testimonial'));
+      if(tests.length>1){
+        let idx=0;
+        setInterval(()=>{
+          tests.forEach((t,i)=>{ t.style.display = (i===idx)?'block':'none'; });
+          idx = (idx+1)%tests.length;
+        },4000);
+      }
+
+      // small accessibility: enable smooth scrolling for internal links
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click',function(e){
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if(target) target.scrollIntoView({behavior:'smooth'});
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
